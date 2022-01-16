@@ -3,6 +3,7 @@ import { render } from 'react-dom/index';
 import { GameContextProvider } from './GameContext';
 import { Grid } from './Components/Grid';
 
+
 const App = () => {
     return (
         <GameContextProvider>

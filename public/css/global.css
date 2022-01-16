@@ -1,0 +1,41 @@
+@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap');
+
+body{
+    background-image: url('../img/background.png');
+    background-size: cover;
+    font-family: 'Press Start 2P', cursive;
+    color: white;
+}
+
+h1{
+    text-shadow: 1px 1px 2px black;
+    color: #9b2226;
+    font-size: 2rem;
+
+}
+
+.with-border-frame{
+    border: solid 1px black;
+    border-image: url("../img/border-frame-grey.png");
+    border-image-width: 50px;
+    border-image-slice: 120;
+}
+
+.background-opacity-light{
+    background: rgba(255,255,255,0.3);
+}
+
+.game-header{
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.game-board{
+    padding: 20px;
+    margin: 50px 20px;
+    width: 50vw;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+

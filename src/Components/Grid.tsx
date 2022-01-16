@@ -17,26 +17,45 @@ export const Grid: React.FunctionComponent = () => {
 
     return (
         <React.Fragment>
-            <Game gameOver={gameOver} />
-            <div
-                style={{
-                    display: 'flex',
-                    border: '1px solid black',
-                    boxSizing: 'content-box',
-                    flexWrap: 'wrap',
-                    width: `calc(40px * ${grid.column})`,
-                }}
+            <div className="game"
+                 style={{
+                     display: 'flex',
+                     alignItems: 'center',
+                     flexDirection: 'column',
+                 }}
             >
-                {grid.map((cell, index) => (
-                    <Cell
-                        key={index}
-                        status={cell.status}
-                        numberOfAdjacentBomb={grid.cellNumberOfAdjacentBomb(index)}
-                        onclick={(ev: MouseEvent) =>
-                            handleClick(index, ev.button)
-                        }
-                    />
-                ))}
+                <div className="game-header with-border-frame background-opacity-light">
+                    <h1>LE DEMINEUR</h1>
+                </div>
+
+                <div className="game-grid with-border-frame background-opacity-light"
+                    style={{
+                        display: 'flex',
+                        justifyContent: 'center',
+                        border: '1px solid black',
+                        boxSizing: 'content-box',
+                        flexWrap: 'wrap',
+                        margin: 'auto',
+                        padding: '2px',
+                        background: 'rgba(255,255,255,0.3)',
+                        width: `calc(40px * ${grid.column})`,
+                    }}
+                >
+
+                    {grid.map((cell, index) => (
+                        <Cell
+                            key={index}
+                            status={cell.status}
+                            numberOfAdjacentBomb={grid.cellNumberOfAdjacentBomb(index)}
+                            onclick={(ev: MouseEvent) =>
+                                handleClick(index, ev.button)
+                            }
+                        />
+                    ))}
+                </div>
+
+                <Game gameOver={gameOver} />
+
             </div>
         </React.Fragment>
     );
