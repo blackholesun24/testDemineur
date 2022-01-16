@@ -61,6 +61,18 @@ export class Grid {
         return this._cells[this._column * y + x];
     }
 
+    cellNumberOfAdjacentBomb(index: number): number{
+        const adjacentCellMatrix: number[] = [-this.column-1, -this.column, -this.column+1, -1, +1, this.column-1, this.column, this.column+1];
+        let numberOfAdjacentBomb: number = 0;
+        adjacentCellMatrix.forEach((differenceWithClickedCase) => {
+            const cellShouldBeTested = this.cellByIndex(index + differenceWithClickedCase);
+            if(cellShouldBeTested !== undefined && cellShouldBeTested.bomb ){
+                numberOfAdjacentBomb++;
+            }
+        });
+        return numberOfAdjacentBomb;
+    }
+
     sendActionToCell(cellIndex: number, action: CellAction): Grid {
         const cells = [...this._cells];
         const cell = cells[cellIndex];
@@ -90,5 +102,9 @@ export class Grid {
 
     get column() {
         return this._column;
+    }
+
+    get cells() {
+        return this._cells;
     }
 }

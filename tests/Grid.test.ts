@@ -87,4 +87,35 @@ describe(Grid, () => {
             expect(mineCount).toBe(10);
         });
     });
+
+    describe('cellNumberOfAdjacentBomb', () => {
+        const row = 3;
+        const column = row;
+        const bomb = Cell.withBomb();
+        const empty = Cell.withoutBomb();
+        const iterator = Array.from(Array(row * column));
+        const gridWithBomb = new Grid(3, [
+            empty,
+            bomb,
+            empty,
+            empty,
+            empty,
+            bomb,
+            empty,
+            bomb,
+            empty,
+        ]);
+
+        test('there are no bombs on adjacent cells', () => {
+            const grid = Grid.generate(row, column, 0);
+            iterator.forEach((_, index) => {
+                expect(grid.cellNumberOfAdjacentBomb(index)).toBe(0);
+            })
+
+        });
+
+        test('it counts the number of adjacent bombs correctly', () => {
+            expect(gridWithBomb.cellNumberOfAdjacentBomb(4)).toBe(3);
+        });
+    });
 });

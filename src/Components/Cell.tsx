@@ -4,6 +4,7 @@ import { CellStatus } from '../Domain/Cell';
 type CellProps = {
     status: CellStatus;
     onclick: Function;
+    numberOfAdjacentBomb: number;
 };
 
 const emojis = {
@@ -38,7 +39,7 @@ export const Cell: React.FunctionComponent<CellProps> = props => {
             }}
             style={cellStyle(props.status)}
         >
-            {emojis[props.status]}
+            {props.status === "dug" && props.numberOfAdjacentBomb.toString() || emojis[props.status]}
         </div>
     );
 };

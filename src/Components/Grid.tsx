@@ -31,6 +31,7 @@ export const Grid: React.FunctionComponent = () => {
                     <Cell
                         key={index}
                         status={cell.status}
+                        numberOfAdjacentBomb={grid.cellNumberOfAdjacentBomb(index)}
                         onclick={(ev: MouseEvent) =>
                             handleClick(index, ev.button)
                         }
