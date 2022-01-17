@@ -22,11 +22,13 @@ describe('Rules', () => {
 
     test('a game is won if every cell without bomb has been dug', () => {
         const cellWithoutBomb = Cell.withoutBomb();
-        const grid = new Grid(1, [cellWithoutBomb]);
+        const cellWithBomb = Cell.withBomb();
+        const grid = new Grid(2, [cellWithoutBomb, cellWithBomb, cellWithoutBomb, cellWithBomb]);
         expect(grid.isDefeated()).toBe(false);
         expect(grid.isVictorious()).toBe(false);
 
-        const gridDug = grid.sendActionToCell(0, 'dig');
+        grid.sendActionToCell(0, 'dig');
+        const gridDug = grid.sendActionToCell(2, 'dig');
 
         expect(gridDug.isDefeated()).toBe(false);
         expect(gridDug.isVictorious()).toBe(true);

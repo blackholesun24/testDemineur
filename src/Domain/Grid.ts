@@ -89,15 +89,26 @@ export class Grid {
     };
 
     isVictorious = () => {
+        let numberOfClickedCell: number = 0;
+        let numberOfMines: number = 0;
         for (let cell of this) {
-            if (
-                (cell.dug === false && cell.flagged === false) ||
-                cell.detonated === true
-            ) {
+            if(cell.bomb === true){
+                numberOfMines++
+            }
+            if(cell.detonated === true){
                 return false;
             }
+
+            if(cell.dug === true){
+                numberOfClickedCell++;
+            }
         }
-        return true;
+
+        if(numberOfClickedCell === this._cells.length - numberOfMines){
+            return true;
+        }
+
+        return false
     };
 
     get column() {
